@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         indigo: {
           DEFAULT: "#181831",
+          10: "#6261F3",
           50: "#111025",
         },
       },
