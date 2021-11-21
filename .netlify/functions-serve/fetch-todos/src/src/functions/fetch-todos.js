@@ -7546,7 +7546,10 @@ exports.handler = async function(event, context, callback) {
       statusCode: 200,
       body: JSON.stringify({
         data
-      })
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
     };
   }
   callback(null, response);
