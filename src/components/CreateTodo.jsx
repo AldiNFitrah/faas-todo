@@ -10,14 +10,12 @@ const CreateTodo = () => {
     e.preventDefault();
 
     const title = inputEl.current.value;
-    console.log(inputEl);
     const todo = {
       title,
     };
 
     axios.post("/.netlify/functions/create-todo", todo)
       .then((response) => {
-        console.log(response);
         setTodos([response.data.data[0], ...todos]);
         inputEl.current.value = "";
       });
