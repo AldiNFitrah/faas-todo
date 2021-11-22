@@ -5,8 +5,16 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[Object.keys(fn)[0]])(fn = 0)), res;
+};
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
+var __export = (target, all) => {
+  __markAsModule(target);
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
 };
 var __reExport = (target, module2, desc) => {
   if (module2 && typeof module2 === "object" || typeof module2 === "function") {
@@ -7524,17 +7532,27 @@ var require_main5 = __commonJS({
 });
 
 // src/database/supabase.js
-var import_supabase_js = __toModule(require_main5());
-var supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
-var supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
-var supabase = (0, import_supabase_js.createClient)(supabaseUrl, supabaseAnonKey);
-var supabase_default = supabase;
+var supabase_exports = {};
+__export(supabase_exports, {
+  default: () => supabase_default
+});
+var import_supabase_js, supabaseUrl, supabaseAnonKey, supabase, supabase_default;
+var init_supabase = __esm({
+  "src/database/supabase.js"() {
+    import_supabase_js = __toModule(require_main5());
+    supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
+    supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+    supabase = (0, import_supabase_js.createClient)(supabaseUrl, supabaseAnonKey);
+    supabase_default = supabase;
+  }
+});
 
 // src/functions/toggle-todo.js
+var supabase2 = (init_supabase(), supabase_exports);
 exports.handler = async function(event, context, callback) {
   const { body } = event;
   const { id } = JSON.parse(body);
-  const { data, status, error } = await supabase_default.from("todos").update({ is_done: "NOT `is_done`" }).match("id", id);
+  const { data, status, error } = await supabase2.from("todos").update({ is_done: "NOT `is_done`" }).match("id", id);
   let response;
   if (!String(status).startsWith("2") || error) {
     response = {

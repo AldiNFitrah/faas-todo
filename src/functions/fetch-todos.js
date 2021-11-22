@@ -1,4 +1,4 @@
-import supabase from '../database/supabase';
+const supabase = require('../database/supabase');
 
 exports.handler = async function (event, context, callback) {
   let { data, status, error } = await supabase.from('todos').select('*');
